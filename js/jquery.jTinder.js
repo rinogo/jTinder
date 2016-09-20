@@ -13,6 +13,7 @@
 			onDislike: null,
 			onSuperLike: null,
 			onLike: null,
+			onShowPane: null,
 			animationRevertSpeed: 200,
 			animationSpeed: 400,
 			threshold: 1,
@@ -27,7 +28,6 @@
 	var xStart = 0;
 	var yStart = 0;
 	var touchStart = false;
-	var touchStartTime;
 	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
 
 	function Plugin(element, options) {
@@ -58,6 +58,9 @@
 		showPane: function (index) {
 			panes.eq(current_pane).hide();
 			current_pane = index;
+			if($that.settings.onShowPane) {
+				$that.settings.onShowPane(panes.eq(current_pane));
+			}
 		},
 
 		next: function () {
@@ -100,14 +103,12 @@
 						touchStart = true;
 						xStart = ev.originalEvent.touches[0].pageX;
 						yStart = ev.originalEvent.touches[0].pageY;
-						touchStartTime = Date.now();
 					}
 				case 'mousedown':
 					if(touchStart === false) {
 						touchStart = true;
 						xStart = ev.pageX;
 						yStart = ev.pageY;
-						touchStartTime = Date.now();
 					}
 				case 'mousemove':
 				case 'touchmove':
@@ -170,13 +171,6 @@
 						panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
 						panes.eq(current_pane).find($that.settings.likeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
 						panes.eq(current_pane).find($that.settings.dislikeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
-
-						//If the touchstart and touchend events were very close to each other, interpret this as a click
-						if(Date.now() - touchStartTime < 100) {
-							$("a", panes.eq(current_pane)).trigger("click");
-							console.log(panes.eq(current_pane));
-							console.log($("a", panes.eq(current_pane)));
-						}
 					}
 					break;
 			}
