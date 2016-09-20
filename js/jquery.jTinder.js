@@ -107,6 +107,7 @@
 						touchStart = true;
 						xStart = ev.pageX;
 						yStart = ev.pageY;
+						touchStartTime = Date.now();
 					}
 				case 'mousemove':
 				case 'touchmove':
