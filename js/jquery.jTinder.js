@@ -170,7 +170,7 @@
 						}
 					} else {
 						console.log('B');
-						console.log(Date.now - touchStartTime);
+						console.log(Date.now() - touchStartTime);
 						lastPosX = 0;
 						lastPosY = 0;
 						panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
@@ -178,7 +178,7 @@
 						panes.eq(current_pane).find($that.settings.dislikeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
 
 						//If the touchstart and touchend events were very close to each other, interpret this as a click
-						if(Date.now - touchStartTime < 100) {
+						if(Date.now() - touchStartTime < 100) {
 							console.log(panes.eq(current_pane));
 						}
 					}
