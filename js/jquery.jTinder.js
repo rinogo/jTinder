@@ -70,15 +70,16 @@
 				}
 				$that.next();
 			});
+		},
 
-		superLike: function() {
+		superlike: function() {
 			panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (pane_width*-1.5) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
 				if($that.settings.onSuperLike) {
 					$that.settings.onSuperLike(panes.eq(current_pane));
 				}
 				$that.next();
 			});
-		};
+		},
 
 		like: function() {
 			panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (pane_width*-1.5) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
