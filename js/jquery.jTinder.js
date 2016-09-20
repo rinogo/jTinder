@@ -17,7 +17,7 @@
 			animationSpeed: 400,
 			threshold: 1,
 			likeSelector: '.like',
-			superLikeSelector: '.super-like',
+			superLikeSelector: '.superlike',
 			dislikeSelector: '.dislike'
 		};
 
