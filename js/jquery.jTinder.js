@@ -49,6 +49,7 @@
 			current_pane = panes.length - 1;
 			$that = this;
 
+			$(element).bind('click', this.handler);
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
@@ -94,6 +95,8 @@
 			ev.preventDefault();
 
 			switch (ev.type) {
+				case 'click':
+					alert("CLICK");
 				case 'touchstart':
 					if(touchStart === false) {
 						touchStart = true;
