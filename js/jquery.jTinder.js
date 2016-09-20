@@ -11,11 +11,13 @@
 	var pluginName = "jTinder",
 		defaults = {
 			onDislike: null,
+			onSuperLike: null,
 			onLike: null,
 			animationRevertSpeed: 200,
 			animationSpeed: 400,
 			threshold: 1,
 			likeSelector: '.like',
+			superLikeSelector: '.super-like',
 			dislikeSelector: '.dislike'
 		};
 
@@ -68,7 +70,15 @@
 				}
 				$that.next();
 			});
-		},
+
+		superLike: function() {
+			panes.eq(current_pane).animate({"transform": "translate(-" + (pane_width) + "px," + (pane_width*-1.5) + "px) rotate(-60deg)"}, $that.settings.animationSpeed, function () {
+				if($that.settings.onSuperLike) {
+					$that.settings.onSuperLike(panes.eq(current_pane));
+				}
+				$that.next();
+			});
+		};
 
 		like: function() {
 			panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (pane_width*-1.5) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
