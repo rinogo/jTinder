@@ -50,6 +50,10 @@
 			current_pane = panes.length - 1;
 			$that = this;
 
+			if(this.settings.onShowPane) {
+				this.settings.onShowPane(panes.eq(current_pane));
+			}
+
 			$(element).bind('touchstart mousedown', this.handler);
 			$(element).bind('touchmove mousemove', this.handler);
 			$(element).bind('touchend mouseup', this.handler);
