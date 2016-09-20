@@ -101,6 +101,7 @@
 						xStart = ev.originalEvent.touches[0].pageX;
 						yStart = ev.originalEvent.touches[0].pageY;
 						touchStartTime = Date.now();
+						console.log("touchstart set");
 					}
 				case 'mousedown':
 					if(touchStart === false) {
@@ -108,6 +109,7 @@
 						xStart = ev.pageX;
 						yStart = ev.pageY;
 						touchStartTime = Date.now();
+						console.log("mousedown set");
 					}
 				case 'mousemove':
 				case 'touchmove':
@@ -138,6 +140,7 @@
 					break;
 				case 'mouseup':
 				case 'touchend':
+					console.log("mouseup/touchend");
 					touchStart = false;
 					var pageX = (typeof ev.pageX == 'undefined') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX;
 					var pageY = (typeof ev.pageY == 'undefined') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY;
@@ -149,6 +152,7 @@
 					var opa = Math.abs((Math.abs(deltaX) / $that.settings.threshold) / 100 + 0.2);
 
 					if (opa >= 1) {
+						console.log('A');
 						if (posX > 0) {
 							panes.eq(current_pane).animate({"transform": "translate(" + (pane_width) + "px," + (posY + pane_width) + "px) rotate(60deg)"}, $that.settings.animationSpeed, function () {
 								if($that.settings.onLike) {
@@ -165,6 +169,8 @@
 							});
 						}
 					} else {
+						console.log('B');
+						console.log(Date.now - touchStartTime);
 						lastPosX = 0;
 						lastPosY = 0;
 						panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
