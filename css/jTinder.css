@@ -141,8 +141,8 @@ body {
 /* Action - buttons */
 .actions {
     text-align: center;
-    width: 360px;
-    margin: 0 auto;
+    width: 300px;
+    margin: 20px auto 0 auto;
     overflow: hidden;
 }
 
