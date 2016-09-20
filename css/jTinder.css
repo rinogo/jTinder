@@ -86,8 +86,9 @@ body {
     transform: rotate(2deg);
 }
 
-/* Like & dislike badge images */
+/* Like, super-like, and dislike badge images */
 #tinderslide .like,
+#tinderslide .super-like,
 #tinderslide .dislike {
     background: url("../img/liked.png") no-repeat scroll 0 0;
     opacity: 0;
@@ -105,6 +106,12 @@ body {
     transform: translate3d(0%,0,0) scale3d(1,1,1);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+
+#tinderslide .super-like {
+    right: 45px;
+    left: auto;
+    background: url("../img/super-like.png") no-repeat scroll 0 0;
 }
 
 #tinderslide .dislike {
@@ -149,6 +156,10 @@ body {
     display: inline-block;
     width: 40px;
     height: 80px;
+}
+
+.actions a.super-like i {
+    background: url("../img/super-like_button.png") no-repeat scroll center center;
 }
 
 .actions a.dislike i {
