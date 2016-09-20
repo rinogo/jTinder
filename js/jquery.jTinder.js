@@ -27,6 +27,7 @@
 	var xStart = 0;
 	var yStart = 0;
 	var touchStart = false;
+	var touchStartTime;
 	var posX = 0, posY = 0, lastPosX = 0, lastPosY = 0, pane_width = 0, pane_count = 0, current_pane = 0;
 
 	function Plugin(element, options) {
@@ -99,6 +100,7 @@
 						touchStart = true;
 						xStart = ev.originalEvent.touches[0].pageX;
 						yStart = ev.originalEvent.touches[0].pageY;
+						touchStartTime = Date.now();
 					}
 				case 'mousedown':
 					if(touchStart === false) {
@@ -167,6 +169,11 @@
 						panes.eq(current_pane).animate({"transform": "translate(0px,0px) rotate(0deg)"}, $that.settings.animationRevertSpeed);
 						panes.eq(current_pane).find($that.settings.likeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
 						panes.eq(current_pane).find($that.settings.dislikeSelector).animate({"opacity": 0}, $that.settings.animationRevertSpeed);
+
+						//If the touchstart and touchend events were very close to each other, interpret this as a click
+						if(Date.now - touchStartTime < 100) {
+							console.log(panes.eq(current_pane));
+						}
 					}
 					break;
 			}
