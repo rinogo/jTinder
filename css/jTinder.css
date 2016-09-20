@@ -141,7 +141,7 @@ body {
 /* Action - buttons */
 .actions {
     text-align: center;
-    width: 304px;
+    width: 360px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -180,7 +180,7 @@ body {
     background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
     background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
     color: #a7a7a7;
-    margin: 36px;
+    margin: 20px;
     width: 80px;
     height: 80px;
     position: relative;
